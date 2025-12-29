@@ -16,7 +16,8 @@ html {
   --sage: #8EA58C;
 
   /* Light sages */
-  --sage-hint: #BFCFBB;
+  --sage-hint: #BFCFBB;   /* your main “light green band” */
+  --sage-soft: #EDF2EC;   /* NEW: very very light sage for the “white” sections */
 
   /* Neutrals */
   --ink: #223029;
@@ -109,6 +110,9 @@ nav a:hover {
 .section {
   padding: 100px 20px;
   text-align: center;
+
+  /* Default background for the “white” sections */
+  background: var(--sage-soft);
 }
 
 .section h2 {
@@ -122,9 +126,15 @@ nav a:hover {
   color: rgba(34, 48, 41, 0.9);
 }
 
-/* “light” sections become sage-hint, not beige */
+/* “light” sections become sage-hint */
 .light {
   background: var(--sage-hint);
+}
+
+/* ===== ONLY change Details + Location sections (explicit, in case you later alter defaults) ===== */
+#details.section,
+#location.section {
+  background: var(--sage-soft);
 }
 
 /* ===== Gallery ===== */
@@ -170,7 +180,7 @@ input:focus, select:focus {
   box-shadow: 0 0 0 3px rgba(191, 207, 187, 0.65);
 }
 
-/* Button switches to moss/evergreen palette */
+/* ===== Button ===== */
 button {
   background: var(--evergreen);
   color: var(--white);
