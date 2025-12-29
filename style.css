@@ -1,31 +1,68 @@
+/* ===== Smooth scrolling ===== */
 html {
   scroll-behavior: smooth;
 }
 
+/* ===== Sage / Forest Green palette (from provided images) ===== */
+:root{
+  /* Dark greens */
+  --forest: #2B3E34;
+  --evergreen: #344C3D;
+  --cypress: #3F4E40;
+
+  /* Mid greens */
+  --olive: #546A50;
+  --moss: #738A6E;
+  --sage: #8EA58C;
+
+  /* Light sages */
+  --sage-hint: #BFCFBB;
+
+  /* Neutrals */
+  --ink: #223029;
+  --paper: #F4F7F3;
+  --white: #FFFFFF;
+}
+
+/* ===== Base ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  color: #333;
+  color: var(--ink);
+  background: var(--paper);
 }
 
+/* ===== Navigation ===== */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.9);
+  background: rgba(191, 207, 187, 0.92); /* --sage-hint with transparency */
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   gap: 30px;
   padding: 15px;
   z-index: 1000;
+  border-bottom: 1px solid rgba(63, 78, 64, 0.18); /* subtle cypress line */
 }
 
 nav a {
   text-decoration: none;
-  color: #444;
-  font-weight: 400;
+  color: var(--forest);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
 }
 
+nav a:hover {
+  color: var(--evergreen);
+  border-bottom-color: rgba(52, 76, 61, 0.55);
+}
+
+/* ===== Hero ===== */
 .hero {
   height: 100vh;
   background: url("https://picsum.photos/1600/900") center/cover;
@@ -34,11 +71,15 @@ nav a {
   justify-content: center;
 }
 
+/* Green-tinted overlay to match palette */
 .overlay {
-  background: rgba(0,0,0,0.4);
-  color: white;
+  background: rgba(43, 62, 52, 0.55); /* forest tint */
+  color: var(--white);
   padding: 60px;
   text-align: center;
+  border-radius: 16px;
+  border: 1px solid rgba(191, 207, 187, 0.28);
+  box-shadow: 0 10px 30px rgba(34, 48, 41, 0.25);
 }
 
 .overlay h1 {
@@ -47,6 +88,24 @@ nav a {
   margin-bottom: 10px;
 }
 
+.overlay p {
+  margin-top: 0;
+  opacity: 0.95;
+}
+
+#countdown {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+}
+
+#countdown strong {
+  color: var(--sage-hint);
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* ===== Sections ===== */
 .section {
   padding: 100px 20px;
   text-align: center;
@@ -56,12 +115,19 @@ nav a {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
   margin-bottom: 30px;
+  color: var(--forest);
 }
 
+.section p {
+  color: rgba(34, 48, 41, 0.9);
+}
+
+/* “light” sections become sage-hint, not beige */
 .light {
-  background: #f7f5f2;
+  background: var(--sage-hint);
 }
 
+/* ===== Gallery ===== */
 .gallery {
   display: flex;
   gap: 20px;
@@ -72,9 +138,12 @@ nav a {
 
 .gallery img {
   width: 280px;
-  border-radius: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(63, 78, 64, 0.18);
+  box-shadow: 0 8px 18px rgba(34, 48, 41, 0.12);
 }
 
+/* ===== Form ===== */
 form {
   max-width: 400px;
   margin: auto;
@@ -84,24 +153,61 @@ input, select, button {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
+input, select {
+  border: 1px solid rgba(63, 78, 64, 0.25);
+  background: rgba(244, 247, 243, 0.9); /* paper */
+  color: var(--ink);
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: rgba(52, 76, 61, 0.65);
+  box-shadow: 0 0 0 3px rgba(191, 207, 187, 0.65);
+}
+
+/* Button switches to moss/evergreen palette */
 button {
-  background: #b89b6a;
-  color: white;
+  background: var(--evergreen);
+  color: var(--white);
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: transform 0.08s ease, background 0.2s ease;
 }
 
+button:hover {
+  background: var(--cypress);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* ===== Map ===== */
 iframe {
   width: 90%;
   height: 400px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(34, 48, 41, 0.14);
+  border: 1px solid rgba(63, 78, 64, 0.18);
 }
 
+/* ===== Footer ===== */
 footer {
   padding: 40px;
-  background: #eee;
+  background: linear-gradient(0deg, rgba(191, 207, 187, 0.85), rgba(244, 247, 243, 1));
   text-align: center;
+  border-top: 1px solid rgba(63, 78, 64, 0.18);
+}
+
+footer p {
+  color: var(--forest);
+  margin: 0;
 }
