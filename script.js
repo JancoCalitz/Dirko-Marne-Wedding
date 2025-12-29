@@ -15,3 +15,65 @@ setInterval(() => {
     <strong>${minutes}</strong> minutes
   `;
 }, 1000);
+
+/* ===== Rotating gallery (3 tiles) =====
+   - Each tile rotates through its own list
+   - 10 seconds per image
+   - Soft cross-fade via CSS class
+*/
+const ROTATE_EVERY_MS = 10000;
+const FADE_MS = 800; // must match CSS transition (0.8s)
+
+const galleries = [
+  {
+    el: document.getElementById("gallery1"),
+    images: ["IMG_8714.jpg", "IMG_8717.jpg"]
+  },
+  {
+    el: document.getElementById("gallery2"),
+    images: ["IMG_8715.jpg", "IMG_8718.jpg"]
+  },
+  {
+    el: document.getElementById("gallery3"),
+    images: ["IMG_8716.jpg", "IMG_8714.jpg"]
+  }
+];
+
+// Start each tile at index 0 (as in your HTML)
+const indices = galleries.map(() => 0);
+
+function swapImageWithFade(imgEl, nextSrc) {
+  if (!imgEl) return;
+
+  // Fade out
+  imgEl.classList.add("is-fading");
+
+  // After fade-out, swap src, then fade in
+  setTimeout(() => {
+    imgEl.src = nextSrc;
+
+    // If the image fails to load, remove fade anyway
+    imgEl.onload = () => {
+      imgEl.classList.remove("is-fading");
+      imgEl.onload = null;
+    };
+
+    imgEl.onerror = () => {
+      imgEl.classList.remove("is-fading");
+      imgEl.onerror = null;
+    };
+
+    // Fallback: ensure it fades back even if load event does not fire
+    setTimeout(() => imgEl.classList.remove("is-fading"), 1200);
+  }, FADE_MS);
+}
+
+setInterval(() => {
+  galleries.forEach((g, i) => {
+    if (!g.el || !g.images || g.images.length < 2) return;
+
+    indices[i] = (indices[i] + 1) % g.images.length;
+    const nextSrc = g.images[indices[i]];
+    swapImageWithFade(g.el, nextSrc);
+  });
+}, ROTATE_EVERY_MS);
