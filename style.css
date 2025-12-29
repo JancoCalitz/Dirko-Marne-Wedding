@@ -66,15 +66,19 @@ nav a:hover {
 /* ===== Hero ===== */
 .hero {
   height: 100vh;
-  /* CHANGED: static hero image */
   background: url("cover3.JPG") center/cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;  /* changed */
+  padding-left: 7vw;            /* new */
+  padding-right: 7vw;           /* new (keeps it neat on small screens) */
+  box-sizing: border-box;       /* new */
 }
+
 
 /* Green-tinted overlay to match palette */
 .overlay {
+  max-width: 560px;
   background: rgba(43, 62, 52, 0.55); /* forest tint */
   color: var(--white);
   padding: 60px;
@@ -239,4 +243,18 @@ footer {
 footer p {
   color: var(--forest);
   margin: 0;
+}
+
+
+@media (max-width: 700px) {
+  .hero {
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .overlay {
+    width: 100%;
+    max-width: 520px;
+    padding: 34px 22px;
+  }
 }
