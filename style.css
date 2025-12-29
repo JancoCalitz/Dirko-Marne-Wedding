@@ -77,7 +77,7 @@ nav a:hover {
 .overlay {
   background: rgba(43, 62, 52, 0.55); /* forest tint */
   color: var(--white);
-  padding: 60px;
+  padding: 30px;
   text-align: center;
   border-radius: 16px;
   border: 1px solid rgba(191, 207, 187, 0.28);
