@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
 
+<body>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#details">Details</a>
+  <a href="#rsvp">RSVP</a>
+  <a href="#location">Location</a>
+</nav>
+
+<section id="home" class="hero">
+  <div class="overlay">
+    <h1>John & Sarah</h1>
+    <p>are getting married</p>
+    <div id="countdown"></div>
+  </div>
+</section>
+
+<section id="details" class="section">
+  <h2>Wedding Details</h2>
+  <p><strong>Date:</strong> 1 August 2026</p>
+  <p><strong>Time:</strong> 15:00</p>
+  <p><strong>Venue:</strong> Rosewood Estate, Pretoria</p>
+
+  <div class="gallery">
+    <img src="https://picsum.photos/400/300?1">
+    <img src="https://picsum.photos/400/300?2">
+    <img src="https://picsum.photos/400/300?3">
+  </div>
+</section>
+
+<section id="rsvp" class="section light">
+  <h2>RSVP</h2>
+  <p>Please respond by <strong>1 February 2026</strong></p>
+
+  <form action="https://formspree.io/f/XXXXXXXX" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <select name="attendance" required>
+      <option value="">Will you attend?</option>
+      <option value="Yes">Joyfully Accept</option>
+      <option value="No">Regretfully Decline</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<section id="location" class="section">
+  <h2>Location</h2>
+  <iframe
+    src="https://www.google.com/maps?q=Pretoria&output=embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+<footer>
+  <p>We can’t wait to celebrate with you :white_heart:</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
