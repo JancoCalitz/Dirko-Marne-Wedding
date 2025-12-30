@@ -35,7 +35,7 @@ const galleries = [
   },
   {
     el: document.getElementById("gallery3"),
-    images: ["3block2.JPG", "3block2.JPG", "3block2.JPG"]
+    images: ["3block3.JPG", "3block2.JPG", "3block2.JPG"]
   }
 ];
 
