@@ -149,6 +149,10 @@ nav a:hover {
   background: var(--sage-soft);  /* change this to --sage-hint if you want the greener band */
 }
 
+#rsvp.section {
+  background: var(--sage-hint);
+}
+
 /* ===== Gallery ===== */
 .gallery {
   display: flex;
