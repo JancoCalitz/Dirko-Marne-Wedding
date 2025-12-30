@@ -142,7 +142,11 @@ nav a:hover {
 }
 
 #location.section {
-  background: var(--sage-hint);
+  background: var(--sage-soft);
+}
+
+#geskenke.section {
+  background: var(--sage-soft);  /* change this to --sage-hint if you want the greener band */
 }
 
 /* ===== Gallery ===== */
@@ -284,6 +288,29 @@ iframe {
   display: block;
 }
 
+/* ===== Simple “card” block for banking info ===== */
+.info-card {
+  max-width: 650px;
+  margin: 30px auto 0;
+  padding: 22px 26px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(63, 78, 64, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 10px 22px rgba(34, 48, 41, 0.10);
+}
+
+.info-card h3 {
+  margin: 0 0 14px;
+  font-family: 'Playfair Display', serif;
+  color: var(--forest);
+}
+
+.info-card p {
+  margin: 6px 0;
+}
+
+
 /* ===== Gift/bank info block ===== */
 .gift-box {
   margin-top: 34px;
@@ -302,6 +329,15 @@ iframe {
 
 .bank-details p {
   margin: 6px 0;
+}
+
+.bank-details {
+  margin-top: 30px;
+  padding: 24px;
+  display: inline-block;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 18px rgba(34, 48, 41, 0.08);
 }
 
 
